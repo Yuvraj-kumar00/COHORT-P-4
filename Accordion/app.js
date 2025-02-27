@@ -1,21 +1,22 @@
 const accordionItem = document.querySelectorAll(".accordion-item");
-const accordionButton = document.querySelectorAll(".accordion-button");
 
-let count = 0;
+accordionItem.forEach( (allAcordionItems) => {
+    const accordionButton = allAcordionItems.querySelector(".accordion-button");
+    const accordionContent = allAcordionItems.querySelector(".accordion-content");
 
-accordionItem.forEach( (item, i) => {
-    
-    item.addEventListener("click", (e) => {
+    accordionButton.addEventListener("click", () => {
+        for (let i = 0; i < accordionItem.length; i++) {
+            console.log(allAcordionItems);
+            
+            if (accordionItem[i] != allAcordionItems) {
+                accordionItem[i].classList.remove("active")
+            }  
+            else {
 
-        if (count % 2 === 0) {
-            accordionItem[i].classList.add("active")
-            accordionButton[i].classList.add("active")
+                allAcordionItems.classList.toggle("active");
+            }
+
         }
-         else {
-            accordionItem[i].classList.remove("active")
-            accordionButton[i].classList.remove("active")
-         }
-        count++
-
     })
+    
 })
